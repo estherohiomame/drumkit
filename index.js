@@ -6,6 +6,9 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++)
 function handleClick () {
     var drumButton = this.innerHTML;
 makeSound(drumButton);
+buttonAnimation(drumButton)
+
+
 }
 }
 
@@ -50,4 +53,14 @@ function makeSound(key) {
 
 document.addEventListener("keydown", function(event) {
     makeSound(event.key)
+    buttonAnimation(event.key)
 })
+
+// button example 
+function buttonAnimation(currentKey) {
+   var activeButton = document.querySelector("." + currentKey)
+   activeButton.classList.add("pressed")
+   setTimeout(function() {
+    activeButton.classList.remove("pressed")
+   }, 100)
+}
